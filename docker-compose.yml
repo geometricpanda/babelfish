@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  hello-world-service:
+    build:
+      context: ./apps/hello-world
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
