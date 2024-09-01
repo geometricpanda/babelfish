@@ -1,0 +1,6 @@
+node_modules
+.yarn/cache
+.git
+.DS_Store
+*.log
+.turbo

@@ -1,9 +1,71 @@
 version: '3.8'
 
 services:
-  hello-world-service:
+  dependencies:
     build:
-      context: ./apps/hello-world
+      context: .
       dockerfile: Dockerfile
+    image: babelfish/dependencies:latest
+
+  webhook-storyblok:
+    build:
+      context: ./apps/webhook/storyblok
+      dockerfile: Dockerfile
+    image: babelfish/webhook-storyblok:latest
+    depends_on:
+      - dependencies
+      - vault
+    networks:
+      - internal_network
+    environment:
+      VAULT_ADDR: http://vault:8200
+      BROKER_ADDR: http://broker:3000
+
+  broker:
+    build:
+      context: ./apps/broker
+      dockerfile: Dockerfile
+    image: babelfish/broker:latest
+    depends_on:
+      - dependencies
+      - vault
+    networks:
+      - internal_network
+    environment:
+      VAULT_ADDR: http://vault:8200
+
+  vault:
+    build:
+      context: ./containers/vault
+      dockerfile: Dockerfile
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - ./containers/vault/data:/vault/data
+      - ./containers/vault/config:/vault/config
+    networks:
+      - internal_network
+    ports:
+      - "8200:8200"
+    environment:
+      VAULT_ADDR: http://vault:8200
+
+  nginx:
+    image: nginx:latest
     ports:
       - "8080:8080"
+    volumes:
+      - ./containers/nginx/config/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./containers/nginx/config/html:/usr/share/nginx/html:ro
+    networks:
+      - internal_network
+      - public_network
+    depends_on:
+      - webhook-storyblok
+      - vault
+
+networks:
+  internal_network:
+    driver: bridge
+  public_network:
+    driver: bridge

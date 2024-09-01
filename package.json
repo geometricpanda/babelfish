@@ -14,11 +14,12 @@
     "typescript": "^5.4.5"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20"
   },
   "packageManager": "yarn@4.4.1",
   "workspaces": [
-    "apps/*",
+    "apps/broker",
+    "apps/webhook/*",
     "packages/*"
   ]
 }
