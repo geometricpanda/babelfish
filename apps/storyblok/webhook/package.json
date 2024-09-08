@@ -1,0 +1,26 @@
+{
+  "name": "storyblok-webhook",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "functions-framework --source=dist/main.js --target=main --port=3000"
+  },
+  "dependencies": {
+    "@babelfish/broker": "*",
+    "@babelfish/systems": "*",
+    "@fastify/vite": "^6.0.7",
+    "dotenv": "^16.4.5",
+    "fastify": "^4.28.1",
+    "fastify-raw-body": "^4.3.0",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "@babelfish/typescript-config": "*",
+    "@google-cloud/functions-framework": "^3.4.2",
+    "@types/uuid": "^10",
+    "typescript": "^5.5.4",
+    "vite": "^5.1.3",
+    "vite-plugin-node": "^3.1.0"
+  }
+}

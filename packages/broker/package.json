@@ -1,0 +1,22 @@
+{
+  "name": "@babelfish/broker",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "dev": "tsup src/index.ts --dts --watch --format cjs,esm ",
+    "build": "tsup src/index.ts --dts --minify --format cjs,esm "
+  },
+  "dependencies": {
+    "@babelfish/systems": "*"
+  },
+  "devDependencies": {
+    "tsup": "^8.2.4"
+  }
+}

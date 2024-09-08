@@ -19,7 +19,8 @@
   "packageManager": "yarn@4.4.1",
   "workspaces": [
     "apps/broker",
-    "apps/webhook/*",
+    "apps/transit/*",
+    "apps/storyblok/*",
     "packages/*"
   ]
 }

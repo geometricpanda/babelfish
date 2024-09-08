@@ -7,7 +7,6 @@
     "serve": "functions-framework --source=dist/main.js --target=main --port=3000"
   },
   "dependencies": {
-    "@babelfish/vault": "*",
     "@fastify/vite": "^6.0.7",
     "dotenv": "^16.4.5",
     "fastify": "^4.28.1"

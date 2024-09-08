@@ -34,17 +34,26 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babelfish/typescript-config@npm:*, @babelfish/typescript-config@workspace:packages/typescript-config":
+"@babelfish/broker@npm:*, @babelfish/broker@workspace:packages/broker":
   version: 0.0.0-use.local
-  resolution: "@babelfish/typescript-config@workspace:packages/typescript-config"
+  resolution: "@babelfish/broker@workspace:packages/broker"
+  dependencies:
+    "@babelfish/systems": "npm:*"
+    tsup: "npm:^8.2.4"
   languageName: unknown
   linkType: soft
 
-"@babelfish/vault@npm:*, @babelfish/vault@workspace:packages/vault":
+"@babelfish/systems@npm:*, @babelfish/systems@workspace:packages/systems":
   version: 0.0.0-use.local
-  resolution: "@babelfish/vault@workspace:packages/vault"
+  resolution: "@babelfish/systems@workspace:packages/systems"
   dependencies:
     tsup: "npm:^8.2.4"
+  languageName: unknown
+  linkType: soft
+
+"@babelfish/typescript-config@npm:*, @babelfish/typescript-config@workspace:packages/typescript-config":
+  version: 0.0.0-use.local
+  resolution: "@babelfish/typescript-config@workspace:packages/typescript-config"
   languageName: unknown
   linkType: soft
 
@@ -848,6 +857,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/uuid@npm:^10":
+  version: 10.0.0
+  resolution: "@types/uuid@npm:10.0.0"
+  checksum: 10c0/9a1404bf287164481cb9b97f6bb638f78f955be57c40c6513b7655160beb29df6f84c915aaf4089a1559c216557dc4d2f79b48d978742d3ae10b937420ddac60
+  languageName: node
+  linkType: hard
+
 "abbrev@npm:^2.0.0":
   version: 2.0.0
   resolution: "abbrev@npm:2.0.0"
@@ -1117,7 +1133,6 @@ __metadata:
   resolution: "broker@workspace:apps/broker"
   dependencies:
     "@babelfish/typescript-config": "npm:*"
-    "@babelfish/vault": "npm:*"
     "@fastify/vite": "npm:^6.0.7"
     "@google-cloud/functions-framework": "npm:^3.4.2"
     dotenv: "npm:^16.4.5"
@@ -3750,6 +3765,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"storyblok-webhook@workspace:apps/storyblok/webhook":
+  version: 0.0.0-use.local
+  resolution: "storyblok-webhook@workspace:apps/storyblok/webhook"
+  dependencies:
+    "@babelfish/broker": "npm:*"
+    "@babelfish/systems": "npm:*"
+    "@babelfish/typescript-config": "npm:*"
+    "@fastify/vite": "npm:^6.0.7"
+    "@google-cloud/functions-framework": "npm:^3.4.2"
+    "@types/uuid": "npm:^10"
+    dotenv: "npm:^16.4.5"
+    fastify: "npm:^4.28.1"
+    fastify-raw-body: "npm:^4.3.0"
+    typescript: "npm:^5.5.4"
+    uuid: "npm:^10.0.0"
+    vite: "npm:^5.1.3"
+    vite-plugin-node: "npm:^3.1.0"
+  languageName: unknown
+  linkType: soft
+
 "string-width-cjs@npm:string-width@^4.2.0, string-width@npm:^4.1.0":
   version: 4.2.3
   resolution: "string-width@npm:4.2.3"
@@ -3921,6 +3956,36 @@ __metadata:
   checksum: 10c0/41525c2ccce86e3ef30af6fa5e1464e6d8bb4286a58ea8db09228f598889581ef62347153f6636cd41553dc41685bdfad0a9d032ef58df9fbb0792b3447d0f04
   languageName: node
   linkType: hard
+
+"transit-decrypt@workspace:apps/transit/decrypt":
+  version: 0.0.0-use.local
+  resolution: "transit-decrypt@workspace:apps/transit/decrypt"
+  dependencies:
+    "@babelfish/typescript-config": "npm:*"
+    "@fastify/vite": "npm:^6.0.7"
+    "@google-cloud/functions-framework": "npm:^3.4.2"
+    dotenv: "npm:^16.4.5"
+    fastify: "npm:^4.28.1"
+    typescript: "npm:^5.5.4"
+    vite: "npm:^5.1.3"
+    vite-plugin-node: "npm:^3.1.0"
+  languageName: unknown
+  linkType: soft
+
+"transit-encrypt@workspace:apps/transit/encrypt":
+  version: 0.0.0-use.local
+  resolution: "transit-encrypt@workspace:apps/transit/encrypt"
+  dependencies:
+    "@babelfish/typescript-config": "npm:*"
+    "@fastify/vite": "npm:^6.0.7"
+    "@google-cloud/functions-framework": "npm:^3.4.2"
+    dotenv: "npm:^16.4.5"
+    fastify: "npm:^4.28.1"
+    typescript: "npm:^5.5.4"
+    vite: "npm:^5.1.3"
+    vite-plugin-node: "npm:^3.1.0"
+  languageName: unknown
+  linkType: soft
 
 "tree-kill@npm:^1.2.2":
   version: 1.2.2
@@ -4153,6 +4218,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"uuid@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "uuid@npm:10.0.0"
+  bin:
+    uuid: dist/bin/uuid
+  checksum: 10c0/eab18c27fe4ab9fb9709a5d5f40119b45f2ec8314f8d4cf12ce27e4c6f4ffa4a6321dc7db6c515068fa373c075b49691ba969f0010bf37f44c37ca40cd6bf7fe
+  languageName: node
+  linkType: hard
+
 "uuid@npm:^8.3.2":
   version: 8.3.2
   resolution: "uuid@npm:8.3.2"
@@ -4238,23 +4312,6 @@ __metadata:
   checksum: 10c0/23e347ca8aa6f0a774227e4eb7abae228f12c6806a727b046aa75e7ee37ffc2d68cff74360e12a42c347f79adc294e2363bc723b957bf4b382b5a8fb39e4df9d
   languageName: node
   linkType: hard
-
-"webhook-storyblok@workspace:apps/webhook/storyblok":
-  version: 0.0.0-use.local
-  resolution: "webhook-storyblok@workspace:apps/webhook/storyblok"
-  dependencies:
-    "@babelfish/typescript-config": "npm:*"
-    "@babelfish/vault": "npm:*"
-    "@fastify/vite": "npm:^6.0.7"
-    "@google-cloud/functions-framework": "npm:^3.4.2"
-    dotenv: "npm:^16.4.5"
-    fastify: "npm:^4.28.1"
-    fastify-raw-body: "npm:^4.3.0"
-    typescript: "npm:^5.5.4"
-    vite: "npm:^5.1.3"
-    vite-plugin-node: "npm:^3.1.0"
-  languageName: unknown
-  linkType: soft
 
 "webidl-conversions@npm:^4.0.2":
   version: 4.0.2
